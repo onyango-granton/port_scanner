@@ -2,6 +2,7 @@ import pyfiglet
 import sys
 import socket
 from datetime import datetime
+from tqdm import tqdm
 
 # Generate and display an ASCII art banner for the port scanner
 ascii_banner = pyfiglet.figlet_format("PORT SCANNER")
@@ -20,7 +21,7 @@ print("Scanning {} started at: {}".format(target, datetime.now()))
 
 try:
     # Iterate through all possible ports (1 to 65534)
-    for port in range(1, 65535):
+    for port in tqdm(range(1, 65535), desc = "Progress", ncols = 75):
         # Create a socket object for IPv4 and TCP connections
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # Set a timeout for the connection attempt
