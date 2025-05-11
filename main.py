@@ -32,4 +32,17 @@ try:
         if result == 0:
             print("Port {} is open".format(port))
         # Close the socket after checking the port
+        # Close the socket after checking the port to free up resources
         s.close()
+
+# Handle the case where the user interrupts the program with Ctrl+C
+except KeyboardInterrupt:
+    sys.exit("Exiting the program")
+
+# Handle the case where the hostname cannot be resolved to an IP address
+except socket.gaierror:
+    sys.exit("Unresolved hostname... check IP addr")
+
+# Handle the case where the server is not responding or unreachable
+except socket.error:
+    sys.exit("Server not responding")
