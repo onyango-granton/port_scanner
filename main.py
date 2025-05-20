@@ -47,3 +47,5 @@ except socket.gaierror:
 # Handle the case where the server is not responding or unreachable
 except socket.error:
     sys.exit("Server not responding")
+
+## Disclaimer, coded for learning purposes
